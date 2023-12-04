@@ -1,0 +1,137 @@
+<!-- JQuery -->
+<title>HTML Editer</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- CSS Style -->
+
+<style type="text/css">
+    br {
+        display: none;
+    }
+
+    .btn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    textarea {
+        display: block;
+        margin: 10px 0;
+        width: 100%;
+        border: 1px solid #333;
+    }
+
+    iframe {
+        display: block;
+        margin: 10px 0;
+        width: 100%;
+        resize: both;
+        overflow: auto;
+        border: 1px solid #333;
+    }
+
+    div {
+        display: flex;
+    }
+
+    .child {
+        width: 1450px;
+        height: 700px;
+        background-color: transparent;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #myframe {
+        background-color: whitesmoke;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .text-typing {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+        padding: 20px 30px;
+        background: #f5f5f5;
+        font-size: 35px;
+        font-family: monospace;
+        background-color: transparent;
+    }
+
+    .text-typing p {
+        font-family: cursive;
+        margin: 0px;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typing 10s steps(22, end) forwards,
+            blink 1s infinite;
+    }
+
+    textarea {
+        padding: 20px;
+        font-size: 15px;
+    }
+
+    @keyframes typing {
+        0% {
+            width: 0%
+        }
+
+        100% {
+            width: 100%
+        }
+    }
+
+    @keyframes blink {
+
+        0%,
+        100% {
+            border-right: 2px solid transparent;
+        }
+
+        50% {
+            border-right: 2px solid #222;
+        }
+</style>
+
+<!-- JavaScript -->
+
+<script type="text/javascript">
+
+    function updateIframe() {
+        var myFrame = $("#myframe").contents().find('body');
+        var textareaValue = $("textarea").val();
+        myFrame.html(textareaValue);
+    }
+    function color() {
+        var a = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        var c = Math.floor(Math.random() * 256);
+        var color = "rgb(" + a + "," + b + "," + c + ")";
+        console.log(color);
+        document.body.style.backgroundColor = color;
+        // document.getElementById("inp1").style.backgroundColor = color;
+    }
+    window.onclick = () => {
+        color();
+    }
+</script>
+
+<body>
+    <div class="sticky-top bg-primary parent">
+        <div class="text-typing">
+            <p>The Crazy Programmer&nbsp;</p>
+        </div>
+    </div>
+    <div class="child shadow">
+        <textarea rows="5" cols="50" placeholder="Type HTML Code Here"></textarea>
+
+        <button class="btn" type="button" onclick="updateIframe()"><strong>Run</strong></button>
+
+        <iframe id="myframe"></iframe>
+    </div>
+</body>

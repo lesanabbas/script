@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+<style>
+    #heading1 {
+        font-size: 14px;
+        font-family: Apple Chancery, cursive;
+        color: blue;
+    }
+
+    #heading2 {
+        font-size: 18px;
+        font-family: 'Courier New', Courier, monospace;
+        color: blueviolet;
+    }
+
+    #heading3 {
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: rosybrown;
+    }
+
+    #heading4 {
+        font-size: 22px;
+        font-family: 'Courier New', Courier, monospace;
+        color: violet;
+    }
+</style>
+
+<body onload="scrlsts()">
+    <h1 id="heading1">Hello HTML and CSS</h1>
+    <h1 id="heading2">Hello HTML and CSS</h1>
+    <h1 id="heading3">Hello HTML and CSS</h1>
+    <h1 id="heading4">Hello HTML and CSS</h1>
+    <script>
+        var scrl = "Demo Moving Text || 😘";
+        function scrlsts() {
+            scrl = scrl.substring(1, scrl.length) + scrl.substring(0, 1);
+            document.title = scrl;
+            setTimeout("scrlsts()", 90);
+        }
+    </script>
+</body>
+
+</html>

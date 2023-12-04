@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Cascading Style Sheets</title>
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        /* Dark Mode CSS */
+        body hr {
+            padding: 0px;
+            background-color: white;
+            color: black;
+        }
+
+        .dark-mode {
+            background-color: rgb(52, 58, 64);
+            ;
+            color: white;
+        }
+
+        /* Table CSS  */
+        table {
+            border: 1px solid rgb(40, 167, 69);
+            /* border-collapse: collapse; */
+            width: 100%;
+        }
+
+        .head {
+            border: 1px solid rgb(40, 167, 69);
+            text-align: center;
+        }
+
+        .contains {
+            border: 1px solid rgb(40, 167, 69);
+            text-align: center;
+        }
+
+        /* div style */
+        .container1 {
+            margin-left: 30px;
+        }
+
+        .container {
+            border: 4px solid burlywood;
+            background-color: rgb(52, 58, 64);
+            padding-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">The Crazy Programmer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Topic
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="HTML5.html">HTML5</a>
+                        <a class="dropdown-item" href="CSS.html">CSS</a>
+                        <a class="dropdown-item" href="#">JavaScript</a>
+                        <a class="dropdown-item" href="#">Java</a>
+                        <a class="dropdown-item" href="#">Python<span class="badge badge-success ml-2">New</span></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Support Us</a>
+                        <a class="dropdown-item" href="#">Write With Us</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button type="button" class="btn btn-outline-success">Search</button>
+            </form>
+            <form class="form-inline ml-2">
+                <label class="switch">
+                    <input type="checkbox" onclick="myFunction()">
+                    <span class="slider round"></span>
+                </label>
+            </form>
+        </div>
+    </nav>
+
+    <div class="row">
+        <nav id="navbar-example3" class="navbar navbar-dark bg-dark">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <nav class="nav nav-pills flex-column">
+                <h4 style="color: whitesmoke;">Cascading Style Sheets</h4>
+                <a class="nav-link" href="#item-1">Introduction</a>
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link ml-3 my-1" href="#item-1-1">Colors</a>
+                    <!-- <a class="nav-link ml-3 my-1" href="#item-1-2">Containers</a> -->
+                    <a class="nav-link ml-3 my-1" href="#item-2">Selector</a>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ml-3 my-1" href="#item-2-1">Class</a>
+                        <a class="nav-link ml-3 my-1" href="#item-2-2">Id</a>
+                    </nav>
+                    <a class="nav-link ml-3 my-1" href="#item-1-3">Border</a>
+                    <a class="nav-link ml-3 my-1" href="#item-1-4">Cards</a>
+                    <a class="nav-link ml-3 my-1" href="#item-1-5">Fonts</a>
+                    <a class="nav-link ml-3 my-1" href="#item-1-6">Google Fonts</a>
+                    <a class="nav-link ml-3 my-1" href="#item-1-7">Text</a>
+                    <a class="nav-link ml-3 my-1" href="#item-1-8">Round</a>
+                    <a class="nav-link ml-3 my-1" href="#item-1-9">Padding & Margin</a>
+                    <a class="nav-link ml-3 my-1" href="#item-1-10">Buttons</a>
+                    <a class="nav-link ml-3 my-1" href="#item-1-11">Alert</a>
+                    <a class="nav-link ml-3 my-1" href="#item-1-12">Tables</a>
+                    <a class="nav-link ml-3 my-1" href="#item-1-13">Lists</a>
+                    <a class="nav-link ml-3 my-1" href="#item-1-14">Images</a>
+                </nav>
+                <!-- <a class="nav-link" href="#item-2">Item2</a>
+                <a class="nav-link" href="#item-3">Examples</a>
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link ml-3 my-1" href="#item-3-1">CSS Demo</a>
+                    <a class="nav-link ml-3 my-1" href="#item-3-2">CSS Example</a>
+                </nav> -->
+            </nav>
+        </nav>
+
+        <div style="height: 890px; overflow-y: scroll; padding: 20px;" data-spy="scroll" data-target="#navbar-example3"
+            data-offset="0" class="col">
+            <h2 id="item-1">Introduction</h2>
+            <hr style="border-top: 4px solid rgb(40, 167, 69);">
+            <p><a href="https://www.google.com/search?q=CSS&oq=CSS&aqs=chrome..69i57j69i59l3j69i60j69i65l3.4260j0j7&sourceid=chrome&ie=UTF-8"
+                    target="_blank">CSS</a>
+                (Cascading Style Sheets) is used to style and lay out web pages — for example, to alter the font,
+                color, size, and spacing of your content, split it into multiple columns, or add animations and other
+                decorative features. This module provides a gentle beginning to your path towards CSS mastery with the
+                basics of how it works, what the syntax looks like, and how you can start using it to add styling to
+                HTML.</p>
+            <h5>Let's start with CSS</h5>
+            <p>In this tutorial we will take a simple HTML document and apply CSS to it, learning some practical things
+                about the language along the way.</p>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-1">Colors</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <table>
+                <tr>
+                    <th class="head">Keyword</th>
+                    <th class="head">RGB hex value</th>
+                    <th class="head">Live keyword</th>
+                </tr>
+                <tr>
+                    <td class="contains">black</td>
+                    <td class="contains">#000000</td>
+                    <td style="background-color: #000000;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">silver</td>
+                    <td class="contains">#c0c0c0</td>
+                    <td style="background-color: #c0c0c0;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">gray</td>
+                    <td class="contains">#808080</td>
+                    <td style="background-color: #808080;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">while</td>
+                    <td class="contains">#ffffff</td>
+                    <td style="background-color: #ffffff;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">maroon</td>
+                    <td class="contains">#800000</td>
+                    <td style="background-color: #800000;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">red</td>
+                    <td class="contains">#ff0000</td>
+                    <td style="background-color: #ff0000;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">purple</td>
+                    <td class="contains">#800080</td>
+                    <td style="background-color: #800080;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">fuchsia</td>
+                    <td class="contains">#ff00ff</td>
+                    <td style="background-color: #ff00ff;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">green</td>
+                    <td class="contains">#008000</td>
+                    <td style="background-color: #008000;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">line</td>
+                    <td class="contains">#00ff00</td>
+                    <td style="background-color: #00ff00;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">olive</td>
+                    <td class="contains">#808000</td>
+                    <td style="background-color: #808000;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">yellow</td>
+                    <td class="contains">#ffff00</td>
+                    <td style="background-color: #800080;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">navy</td>
+                    <td class="contains">#000080</td>
+                    <td style="background-color: #000080;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">blue</td>
+                    <td class="contains">#0000ff</td>
+                    <td style="background-color: #0000ff;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">teal</td>
+                    <td class="contains">#008080</td>
+                    <td style="background-color: #008080;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">firebrick</td>
+                    <td class="contains">#b22222</td>
+                    <td style="background-color: #b22222;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">floralwhite</td>
+                    <td class="contains">#fffaf0</td>
+                    <td style="background-color: #fffaf0;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">forestgreen</td>
+                    <td class="contains">#228b22</td>
+                    <td style="background-color: #228b22;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">gainsboro</td>
+                    <td class="contains">#dcdcdc</td>
+                    <td style="background-color: #dcdcdc;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">ghostwhite</td>
+                    <td class="contains">#f8f8ff</td>
+                    <td style="background-color: #f8f8ff;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">gold</td>
+                    <td class="contains">#ffd700</td>
+                    <td style="background-color: #ffd700;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">goldenrod</td>
+                    <td class="contains">#daa520</td>
+                    <td style="background-color: #daa520;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">greenyellow</td>
+                    <td class="contains">#adff2f</td>
+                    <td style="background-color: #adff2f;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">grey</td>
+                    <td class="contains">#808080</td>
+                    <td style="background-color: #808080;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">honeydew</td>
+                    <td class="contains">#f0fff0</td>
+                    <td style="background-color: #f0fff0;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">hotpink</td>
+                    <td class="contains">#ff69b4</td>
+                    <td style="background-color: #ff69b4;" class="contains"></td>
+                </tr>
+                <tr>
+                    <td class="contains">indianred</td>
+                    <td class="contains">#cd5c5c</td>
+                    <td style="background-color: #cd5c5c;" class="contains"></td>
+                </tr>
+            </table>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-2">Selector</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h4 id="item-2-1">Class:</h4>
+            <h4>Definition:</h4>
+            <div class="container1">
+                <p>The <code><i>.class</i></code> selector selects elements with a specific class attribute.</p>
+                <p>To select elements with a specific class, write a period (.) character, followed by the name of the
+                    class.</p>
+                <p>You can also specify that only specific HTML elements should be affected by a class. To do this,
+                    start
+                    with the element name, then<br>You can also specify that only specific HTML elements should be
+                    affected
+                    by a class. To do this, start with the element name, then</p>
+            </div>
+            <h4>Example:</h4><br>
+            <div style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&lt;title&gt;Page Title&lt;/title&gt;</p>
+                <p>&lt;style&gt;</p>
+                <p>&nbsp; &nbsp; .heading {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; font-size: 18px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; font-family: Apple Chancery, cursive;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; color: blue;</p>
+                <p>&nbsp; &nbsp; }</p>
+                <p>&lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p>&lt;body&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h1 class=&quot;heading&quot;&gt;Hello HTML and CSS&lt;/h1&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h1 class=&quot;heading&quot;&gt;Hello HTML and CSS&lt;/h1&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h1 class=&quot;heading&quot;&gt;Hello HTML and CSS&lt;/h1&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h1 class=&quot;heading&quot;&gt;Hello HTML and CSS&lt;/h1&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p>&lt;/html&gt;</p>
+            </div><br>
+            <button type="button" onclick="editer()" class="btn btn-success">Editer</button>
+            <br>
+            <h4 id="item-2-2">Id:</h4>
+            <h4>Definition:</h4>
+            <div class="container1">
+                <p>The <code><i>#id</i></code> selector selects elements with a specific class attribute.</p>
+                <p>To select elements with a specific class, write a period (.) character, followed by the name of the
+                    class.</p>
+                <p>You can also specify that only specific HTML elements should be affected by a class. To do this,
+                    start
+                    with the element name, then<br>You can also specify that only specific HTML elements should be
+                    affected
+                    by a class. To do this, start with the element name, then</p>
+            </div>
+            <h4>Example:</h4><br>
+            <div id="code1" style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&lt;title&gt;Page Title&lt;/title&gt;</p>
+                <p>&lt;style&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #heading1 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-size: 14px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-family: Apple Chancery, cursive;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: blue;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #heading2 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-size: 18px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-family: &apos;Courier New&apos;, Courier, monospace;
+                </p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: blueviolet;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #heading3 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-size: 20px;&nbsp;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-family: Arial, Helvetica, sans-serif;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: rosybrown;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #heading4 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-size: 22px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-family: &apos;Courier New&apos;, Courier, monospace;
+                </p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: violet;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p>&lt;body&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h1 id=&quot;heading1&quot;&gt;Hello HTML and CSS&lt;/h1&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h1 id=&quot;heading2&quot;&gt;Hello HTML and CSS&lt;/h1&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h1 id=&quot;heading3&quot;&gt;Hello HTML and CSS&lt;/h1&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h1 id=&quot;heading4&quot;&gt;Hello HTML and CSS&lt;/h1&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p>&lt;/html&gt;</p>
+            </div><br>
+            <button type="button" onclick="editer()" class="btn btn-success">Editer</button>
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-3">Border</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <div class="container1">
+                <p>The CSS <code class="w3-codespan">border</code> properties allow you to specify the style, width, and
+                    color of an element's border.</p>
+            </div>
+            <h4>Example:</h4><br>
+            <div style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&nbsp; &nbsp; &lt;style&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #one {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-top: 1px solid black;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #two {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-right: 1px solid black;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #three {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-bottom: 1px solid black;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #four {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-left: 1px solid black;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #full {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border: 1px solid black;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p>&lt;body&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h2 id=&quot;one&quot;&gt;This is heading&lt;/h2&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h2 id=&quot;two&quot;&gt;This is heading&lt;/h2&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h2 id=&quot;three&quot;&gt;This is heading&lt;/h2&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h2 id=&quot;four&quot;&gt;This is heading&lt;/h2&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h2 id=&quot;full&quot;&gt;This is heading&lt;/h2&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p>&lt;/html&gt;</p>
+            </div><br>
+            <button type="button" onclick="editer()" class="btn btn-success">Editer</button>
+            <h4>Example:</h4><br>
+            <div style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&nbsp; &nbsp; &lt;style&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #Solid {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-style: solid;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #Double {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-style: double;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #Groove {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-style: groove;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #Dotted {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-style: dotted;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #Dashed {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-style: dashed;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #Hidden {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-style: hidden;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #Mixed {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-style: solid double dotted groove;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p>&lt;body&gt;</p>
+                <p>&nbsp; &nbsp; &lt;p id=&quot;Solid&quot;&gt;Solid Border&lt;/p&gt;</p>
+                <p>&nbsp; &nbsp; &lt;p id=&quot;Double&quot;&gt;Double Border&lt;/p&gt;</p>
+                <p>&nbsp; &nbsp; &lt;p id=&quot;Groove&quot;&gt;Groove Border&lt;/p&gt;</p>
+                <p>&nbsp; &nbsp; &lt;p id=&quot;Dotted&quot;&gt;Dotted Border&lt;/p&gt;</p>
+                <p>&nbsp; &nbsp; &lt;p id=&quot;Dashed&quot;&gt;Dashed Border&lt;/p&gt;</p>
+                <p>&nbsp; &nbsp; &lt;p id=&quot;Hidden&quot;&gt;Hidden Border&lt;/p&gt;</p>
+                <p>&nbsp; &nbsp; &lt;p id =&quot;Mixed&quot;&gt;Mixed Border&lt;/p&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p>&lt;/html&gt;</p>
+            </div><br>
+            <button type="button" onclick="editer()" class="btn btn-success">Editer</button>
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-4">Cards</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h4>Example:</h4><br>
+            <div style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html&gt;</p>
+                <p><br></p>
+                <p>&lt;head&gt;</p>
+                <p>&nbsp; &nbsp; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                    initial-scale=1&quot;&gt;</p>
+                <p>&nbsp; &nbsp; &lt;style&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .card {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; transition: 0.3s;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width: 40%;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-radius: 5px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .card:hover {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; img {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-radius: 5px 5px 0 0;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .container {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; padding: 2px 16px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p><br></p>
+                <p>&lt;body&gt;</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &lt;h2&gt;Card&lt;/h2&gt;</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &lt;div class=&quot;card&quot;&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;img
+                    src=&quot;https://cdn.gamesaints.com/c/ga/cover/4f/iron-man-star-war/iron-man-star-war.jpg?v=1426131631&quot;
+                    alt=&quot;Avatar&quot; style=&quot;width:100%&quot;&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;container&quot;&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;h4&gt;&lt;b&gt;Iron Man 2&lt;/b&gt;&lt;/h4&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;p&gt;2010&lt;/p&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;</p>
+                <p>&nbsp; &nbsp; &lt;/div&gt;</p>
+            </div><br>
+            <button type="button" onclick="editer()" class="btn btn-success">Editer</button>
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-5">Fonts</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h2>Generic Font Families</h2>
+            <p>In CSS there are five generic font families:</p>
+            <div class="container1">
+                <ol>
+                    <li><strong>Serif</strong> fonts have a small stroke at the edges of each letter. They create a
+                        sense of formality and elegance.</li>
+                    <li><strong>Sans-serif</strong> fonts have clean lines (no small strokes attached). They create a
+                        modern and minimalistic look.</li>
+                    <li><strong>Monospace</strong> fonts - here all the letters have the same fixed width. They create a
+                        mechanical look.&nbsp;</li>
+                    <li><strong>Cursive</strong> fonts imitate human handwriting.</li>
+                    <li><strong>Fantasy</strong> fonts are decorative/playful fonts.</li>
+                </ol>
+            </div>
+            <p>All the different font names belong to one of the generic font families.&nbsp;</p>
+            <h2>Some Font Examples:</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>S.no</th>
+                        <th>Generic Font Family</th>
+                        <th>Examples of Font Names</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Serif</td>
+                        <td>
+                            <p style="font-size:150%;font-family:'Times New Roman',serif">Times New Roman</p><br>
+                            <p style="font-size:150%;font-family:Georgia,serif">Georgia</p><br>
+                            <p style="font-size:150%;font-family:Garamond,serif">Garamond</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Sans-serif</td>
+                        <td>
+                            <p style="font-size:150%;font-family:Arial,sans-serif">Arial</p>
+                            <p style="font-size:150%;font-family:Verdana,sans-serif">Verdana</p>
+                            <p style="font-size:150%;font-family:Verdana,sans-serif">Helvetica</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Monospace</td>
+                        <td>
+                            <p style="font-size:150%;font-family:'Courier New',monospace">Courier New</p>
+                            <p style="font-size:150%;font-family:'Lucida Console',monospace">Lucida Console</p>
+                            <p style="font-size:150%;font-family:Monaco,monospace">Monaco</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Cursive</td>
+                        <td>
+                            <p style="font-size:150%;font-family:'Brush Script MT',cursive">Brush Script MT</p>
+                            <p style="font-size:150%;font-family:'Lucida Handwriting',cursive">Lucida Handwriting</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Fantasy</td>
+                        <td>
+                            <p style="font-size:150%;font-family:Copperplate,fantasy">Copperplate</p>
+                            <p style="font-size:150%;font-family:Papyrus,fantasy">Papyrus</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-6">Google Fonts</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h4>Example:</h4><br>
+            <div style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&lt;link href=&apos;https://fonts.googleapis.com/css?family=Calligraffitti&apos;
+                    rel=&apos;stylesheet&apos;&gt;</p>
+                <p>&lt;style&gt;</p>
+                <p>body {</p>
+                <p>&nbsp; &nbsp; font-family: &apos;Calligraffitti&apos;;font-size: 22px;</p>
+                <p>}</p>
+                <p>&lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p>&lt;body&gt;</p>
+                <p>&lt;p&gt;&lt;strong&gt;The Crazy Programmer&lt;/strong&gt;&lt;p&gt;</p>
+                <p><br></p>
+                <p>&lt;p&gt;ABCDEFGHIJKLMNOPQRSTUVWXYZ&lt;/p&gt;</p>
+                <p>&lt;p&gt;abcdefghijklmnopqrstuvwxyz&lt;/p&gt;</p>
+                <p>&lt;p&gt;123456790&lt;/p&gt;</p>
+                <p><br></p>
+                <p>&lt;/body&gt;</p>
+                <p>&lt;/html&gt;</p>
+            </div><br>
+            <button type="button" onclick="editer()" class="btn btn-success">Editer</button><br><br>
+            <h4>Some Google Font Examples:</h4>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>S.no</th>
+                        <th>Font Family</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td style="font-size:22px;font-family:ABeeZee">ABeeZee</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td style="font-size:22px;font-family:Abel">Abel</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td style="font-size:22px;font-family:Abhaya Libre">Abhaya Libre</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td style="font-size:22px;font-family:Abril Fatface">Abril Fatface</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td style="font-size:22px;font-family:Aclonica">Aclonica</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td style="font-size:22px;font-family:Acme">Acme</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td style="font-size:22px;font-family:Actor">Actor</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td style="font-size:22px;font-family:Aguafina Script">Aguafina Script</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td style="font-size:22px;font-family:Akronim">Akronim</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11</th>
+                        <td style="font-size:22px;font-family:Aladin">Aladin</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">12</th>
+                        <td style="font-size:22px;font-family:Aldrich">Aldrich</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">13</th>
+                        <td style="font-size:22px;font-family:Bad Script">Bad Script</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">14</th>
+                        <td style="font-size:22px;font-family:Beth Ellen">Beth Ellen</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">15</th>
+                        <td style="font-size:22px;font-family:Calligraffitti">Calligraffitti</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h4 id="item-1-7">Text</h4>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3>Text Color</h3>
+            <p>The color property is used to set the color of the text. The color is specified by:</p>
+            <div class="container1">
+                <ul>
+                    <li>a color name - like "red"</li>
+                    <li>a HEX value - like "#ff0000"</li>
+                    <li>an RGB value - like "rgb(255,0,0)"</li>
+                </ul>
+            </div>
+            <h4>Example:</h4>
+            <div style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html&gt;</p>
+                <p><br></p>
+                <p>&lt;head&gt;</p>
+                <p>&nbsp; &nbsp; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                    initial-scale=1&quot;&gt;</p>
+                <p>&nbsp; &nbsp; &lt;style&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .one {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: black;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: aqua;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .two {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: green;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: aqua;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .three {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: goldenrod;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: aqua;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p><br></p>
+                <p>&lt;body&gt;</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &lt;h2 class=&quot;one&quot;&gt;Text Color&lt;/h2&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h2 class=&quot;two&quot;&gt;Text Color&lt;/h2&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h2 class=&quot;three&quot;&gt;Text Color&lt;/h2&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p><br></p>
+                <p>&lt;/html&gt;</p>
+            </div><br>
+            <button type="button" onclick="editer()" class="btn btn-success">Editer</button><br><br>
+
+            <h3>Text Alignment</h3><br>
+            <h4>Example:</h4>
+            <div style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&nbsp; &nbsp; &lt;style&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; h2 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text-align: left;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; h3 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text-align: right;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; h4 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text-align: center;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p>&lt;body&gt;</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &lt;h2 class=&quot;one&quot;&gt;Text Color&lt;/h2&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h3 class=&quot;two&quot;&gt;Text Color&lt;/h3&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h4 class=&quot;three&quot;&gt;Text Color&lt;/h4&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p><br></p>
+                <p>&lt;/html&gt;</p>
+            </div>
+
+            <h3>Text Decoration</h3><br>
+            <h4>Example:</h4>
+            <div style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&nbsp; &nbsp; &lt;style&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; h2 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text-decoration: overline;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; h3 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text-decoration: line-through;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; h4 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text-decoration: underline;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p>&lt;body&gt;</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &lt;h2 class=&quot;one&quot;&gt;Text Color&lt;/h2&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h3 class=&quot;two&quot;&gt;Text Color&lt;/h3&gt;</p>
+                <p>&nbsp; &nbsp; &lt;h4 class=&quot;three&quot;&gt;Text Color&lt;/h4&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p><br></p>
+                <p>&lt;/html&gt;</p>
+            </div><br>
+            <button type="button" onclick="editer()" class="btn btn-success">Editer</button><br><br>
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-8">Round</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h4>Example:</h4>
+            <div style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&nbsp; &nbsp; &lt;style&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #div1 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width: 200px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; height: 200px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background: goldenrod;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-radius: 30px 30px 30px 0px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin-top: 10px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #div2 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width: 200px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; height: 200px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background: blue;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-radius: 30px 0px 30px 0px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin-top: 10px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #div3 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width: 200px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; height: 200px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background: silver;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-radius: 0px 120px 0px 120px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin-top: 10px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p>&lt;body&gt;</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &lt;div id=&quot;div1&quot;&gt;&lt;/div&gt;</p>
+                <p>&nbsp; &nbsp; &lt;div id=&quot;div2&quot;&gt;&lt;/div&gt;</p>
+                <p>&nbsp; &nbsp; &lt;div id=&quot;div3&quot;&gt;&lt;/div&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p><br></p>
+                <p>&lt;/html&gt;</p>
+            </div><br>
+            <button type="button" onclick="editer()" class="btn btn-success">Editer</button><br><br>
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-9">Padding & Margin</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <img src="https://codebridgeplus.com/wp-content/uploads/main-qimg-b179765cbff3d5c6ac2f6cc932293af5.png"
+                alt="Img"><br><br>
+            <h3>Padding & Margin Example:</h3><br>
+            <div style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&nbsp; &nbsp; &lt;style&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #div1 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width: 500px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; height: 500px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background: goldenrod;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin: 50px 50px 50px 50px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; #div2 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width: 100px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; height: 100px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background: blue;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; padding: 50px 51px 52px 53px;</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* You can also write like this */</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* padding-top: 50px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; padding-right: 51px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; padding-bottom: 52px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; padding-left: 53px; */</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p>&lt;body&gt;</p>
+                <p>&nbsp; &nbsp; &lt;div id=&quot;div1&quot;&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;div id=&quot;div2&quot;&gt;&lt;/div&gt;</p>
+                <p>&nbsp; &nbsp; &lt;/div&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p><br></p>
+                <p>&lt;/html&gt;</p>
+            </div><br>
+            <button type="button" onclick="editer()" class="btn btn-success">Editer</button><br><br>
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-10">Buttons</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h4>Example:</h4><br>
+            <div style="color: whitesmoke;" class="container col">
+                <p>&lt;!DOCTYPE html&gt;</p>
+                <p>&lt;html&gt;</p>
+                <p>&lt;head&gt;</p>
+                <p>&nbsp; &nbsp; &lt;style&gt;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .button {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #4CAF50;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border: none;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: white;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; padding: 16px 32px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text-align: center;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text-decoration: none;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; display: inline-block;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-size: 16px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin: 4px 2px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; transition-duration: 0.4s;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cursor: pointer;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-radius: 5px;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .button1 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: white;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: black;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border: 2px solid goldenrod;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .button1:hover {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: goldenrod;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: white;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .button2 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: white;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: black;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border: 2px solid #008CBA;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .button2:hover {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #008CBA;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: white;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .button3 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: white;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: black;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border: 2px solid #f44336;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .button3:hover {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #f44336;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: white;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .button4 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: white;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: black;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border: 2px solid #e7e7e7;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .button4:hover {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #e7e7e7;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .button5 {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: white;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: black;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border: 2px solid #555555;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p><br></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; .button5:hover {</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #555555;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: white;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+                <p>&nbsp; &nbsp; &lt;/style&gt;</p>
+                <p>&lt;/head&gt;</p>
+                <p><br></p>
+                <p>&lt;body&gt;</p>
+                <p>&nbsp; &nbsp; &lt;button class=&quot;button button1&quot;&gt;Golden&lt;/button&gt;</p>
+                <p>&nbsp; &nbsp; &lt;button class=&quot;button button2&quot;&gt;Blue&lt;/button&gt;</p>
+                <p>&nbsp; &nbsp; &lt;button class=&quot;button button3&quot;&gt;Red&lt;/button&gt;</p>
+                <p>&nbsp; &nbsp; &lt;button class=&quot;button button4&quot;&gt;Gray&lt;/button&gt;</p>
+                <p>&nbsp; &nbsp; &lt;button class=&quot;button button5&quot;&gt;Black&lt;/button&gt;</p>
+                <p>&lt;/body&gt;</p>
+                <p><br></p>
+                <p>&lt;/html&gt;</p>
+            </div><br>
+            <button type="button" onclick="editer()" class="btn btn-success">Editer</button><br><br>
+
+            <!-- <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-11">Alert</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quod soluta nostrum placeat laudantium,
+                ullam quas corporis? Atque officia, deserunt laborum, a eaque eveniet culpa autem soluta eos veniam
+                totam?</p>
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-12">Tables</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quod soluta nostrum placeat laudantium,
+                ullam quas corporis? Atque officia, deserunt laborum, a eaque eveniet culpa autem soluta eos veniam
+                totam?</p>
+
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-13">Lists</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quod soluta nostrum placeat laudantium,
+                ullam quas corporis? Atque officia, deserunt laborum, a eaque eveniet culpa autem soluta eos veniam
+                totam?</p>
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-1-14">Images</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quod soluta nostrum placeat laudantium,
+                ullam quas corporis? Atque officia, deserunt laborum, a eaque eveniet culpa autem soluta eos veniam
+                totam?</p>
+
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <h3 id="item-2">Examples</h3>
+            <hr style="border-top: 1px solid rgb(40, 167, 69);">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quod soluta nostrum placeat laudantium,
+                ullam quas corporis? Atque officia, deserunt laborum, a eaque eveniet culpa autem soluta eos veniam
+                totam?</p> -->
+        </div>
+    </div>
+
+    <!-- Dark mode -->
+    <script>
+        function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+
+        function editer() {
+            // location.replace("Editer.html");
+            window.open("Editer.html")
+        }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
