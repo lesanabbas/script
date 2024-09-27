@@ -18,6 +18,11 @@ jobs:
         run: |
           pip install --upgrade pip
           # Add any other dependencies here, e.g., pip install requests
-
+      
+      - name: Debug
+        run: |
+          pwd
+          ls
+      
       - name: Run script
         run: python ../main.py
