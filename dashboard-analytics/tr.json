@@ -1,0 +1,27 @@
+{
+  "totalQuotation": 98,
+  "totalBookings": 23,
+  "totalRequests": 20,
+  "conversionRate": 53,
+  "quotationData": {
+    "heading": "Quotation Data",
+    "pending": 13,
+    "verified": 17,
+    "expired": 28,
+    "Data": [
+      { "browser": "Pending", "visitors": 10, "fill": "var(--color-pending)" },
+      { "browser": "Verified", "visitors": 14, "fill": "var(--color-verified)" },
+      { "browser": "Expired", "visitors": 26, "fill": "var(--color-expired)" }
+    ],
+    "chartConfig": {
+      "visitors": { "label": "Visitors" },
+      "pending": { "label": "Pending", "color": "hsl(var(--chart-1))" },
+      "verified": { "label": "Verified", "color": "hsl(var(--chart-2))" },
+      "expired": { "label": "Expired", "color": "hsl(var(--chart-3))" }
+    }
+  },
+  "bookingData": {
+    "heading": "Booking Data",
+    "incoming": 15,
+    "accepted": 9,
+   
