@@ -1,0 +1,78 @@
+{
+  "totalQuotation": 83,
+  "totalBookings": 43,
+  "totalRequests": 23,
+  "conversionRate": 50,
+  "quotationData": {
+    "heading": "Quotation Data",
+    "pending": 10,
+    "verified": 32,
+    "expired": 12,
+    "Data": [
+      { "browser": "Pending", "visitors": 10, "fill": "var(--color-pending)" },
+      { "browser": "Verified", "visitors": 32, "fill": "var(--color-verified)" },
+      { "browser": "Expired", "visitors": 23, "fill": "var(--color-expired)" }
+    ],
+    "chartConfig": {
+      "visitors": { "label": "Visitors" },
+      "pending": { "label": "Pending", "color": "hsl(var(--chart-1))" },
+      "verified": { "label": "Verified", "color": "hsl(var(--chart-2))" },
+      "expired": { "label": "Expired", "color": "hsl(var(--chart-3))" }
+    }
+  },
+  "bookingData": {
+    "heading": "Booking Data",
+    "incoming": 26,
+    "accepted": 12,
+    "declined": 42,
+    "Data": [
+      { "browser": "InProgress", "visitors": 26, "fill": "var(--color-incoming)" },
+      { "browser": "Confirmed", "visitors": 12, "fill": "var(--color-accepted)" },
+      { "browser": "Completed", "visitors": 42, "fill": "var(--color-declined)" }
+    ],
+    "chartConfig": {
+      "visitors": { "label": "Visitors" },
+      "incoming": { "label": "InProgress", "color": "hsl(var(--chart-1))" },
+      "accepted": { "label": "Confirmed", "color": "hsl(var(--chart-2))" },
+      "declined": { "label": "Completed", "color": "hsl(var(--chart-3))" }
+    }
+  },
+  "requestData": {
+    "heading": "Request Data",
+    "incoming": 12,
+    "inProgress": 23,
+    "selected": 32,
+    "expired": 12,
+    "declined": 12,
+    "Data": [
+      { "browser": "Incoming", "visitors": 12, "fill": "var(--color-incoming)" },
+      { "browser": "InProgress", "visitors": 23, "fill": "var(--color-inProgress)" },
+      { "browser": "Selected", "visitors": 32, "fill": "var(--color-selected)" },
+      { "browser": "Expired", "visitors": 12, "fill": "var(--color-expired)" },
+      { "browser": "Declined", "visitors": 12, "fill": "var(--color-declined)" }
+    ],
+    "chartConfig": {
+      "visitors": { "label": "Visitors" },
+      "incoming": { "label": "Incoming", "color": "hsl(var(--chart-1))" },
+      "inProgress": { "label": "InProgress", "color": "hsl(var(--chart-2))" },
+      "selected": { "label": "Selected", "color": "hsl(var(--chart-3))" },
+      "expired": { "label": "Expired", "color": "hsl(var(--chart-4))" },
+      "declined": { "label": "Declined", "color": "hsl(var(--chart-1))" }
+    }
+  },
+  "bookingAnalytics": {
+    "heading": "Booking Analytics",
+    "Data": [
+      { "month": "January", "Request": 120, "Booking": 60 },
+      { "month": "February", "Request": 180, "Booking": 90 },
+      { "month": "March", "Request": 250, "Booking": 140 },
+      { "month": "April", "Request": 220, "Booking": 120 },
+      { "month": "May", "Request": 300, "Booking": 180 },
+      { "month": "June", "Request": 270, "Booking": 160 }
+    ],
+    "chartConfig": {
+      "desktop": { "label": "Request", "color": "hsl(var(--chart-1))" },
+      "mobile": { "label": "Booking", "color": "hsl(var(--chart-2))" }
+    }
+  }
+}
