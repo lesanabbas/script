@@ -55,4 +55,9 @@
       "visitors": { "label": "Visitors" },
       "incoming": { "label": "Incoming", "color": "hsl(var(--chart-1))" },
       "inProgress": { "label": "InProgress", "color": "hsl(var(--chart-2))" },
-      "selected": { "label": "Selected", "color": "hsl(var(--
+      "selected": { "label": "Selected", "color": "hsl(var(--chart-3))" },
+      "expired": { "label": "Expired", "color": "hsl(var(--chart-4))" },
+      "declined": { "label": "Declined", "color": "hsl(var(--chart-5))" }
+    }
+  }
+}
