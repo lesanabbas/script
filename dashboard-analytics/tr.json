@@ -24,4 +24,40 @@
     "heading": "Booking Data",
     "incoming": 15,
     "accepted": 9,
-   
+    "declined": 17,
+    "Data": [
+      { "browser": "Incoming", "visitors": 51, "fill": "var(--color-incoming)" },
+      { "browser": "Accepted", "visitors": 38, "fill": "var(--color-accepted)" },
+      { "browser": "Declined", "visitors": 25, "fill": "var(--color-declined)" }
+    ],
+    "chartConfig": {
+      "visitors": { "label": "Visitors" },
+      "incoming": { "label": "Incoming", "color": "hsl(var(--chart-1))" },
+      "accepted": { "label": "Accepted", "color": "hsl(var(--chart-2))" },
+      "declined": { "label": "Declined", "color": "hsl(var(--chart-3))" }
+    }
+  },
+  "requestData": {
+    "heading": "Request Data",
+    "incoming": 18,
+    "inProgress": 40,
+    "selected": 21,
+    "expired": 30,
+    "declined": 30,
+    "Data": [
+      { "browser": "Incoming", "visitors": 20, "fill": "var(--color-incoming)" },
+      { "browser": "InProgress", "visitors": 35, "fill": "var(--color-inProgress)" },
+      { "browser": "Selected", "visitors": 17, "fill": "var(--color-selected)" },
+      { "browser": "Expired", "visitors": 53, "fill": "var(--color-expired)" },
+      { "browser": "Declined", "visitors": 22, "fill": "var(--color-declined)" }
+    ],
+    "chartConfig": {
+      "visitors": { "label": "Visitors" },
+      "incoming": { "label": "Incoming", "color": "hsl(var(--chart-1))" },
+      "inProgress": { "label": "InProgress", "color": "hsl(var(--chart-2))" },
+      "selected": { "label": "Selected", "color": "hsl(var(--chart-3))" },
+      "expired": { "label": "Expired", "color": "hsl(var(--chart-4))" },
+      "declined": { "label": "Declined", "color": "hsl(var(--chart-5))" }
+    }
+  }
+}
