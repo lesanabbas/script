@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emoji Memory Game</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4faff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    #stats {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    #game {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      width: 80px;
+      height: 80px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .card.flipped .card-inner,
+    .card.matched .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .card-front {
+      background: #1e90ff;
+      color: white;
+    }
+
+    .card-back {
+      background: #ffffff;
+      color: black;
+      transform: rotateY(180deg);
+    }
+
+    .card.matched .card-back {
+      background: #90ee90;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Emoji Memory Game</h1>
+  <div id="stats">
+    Level: <span id="level">1</span> |
+    Wins: <span id="wins">0</span> |
+    Moves: <span id="moves">0</span> |
+    Best (min flips): <span id="best">–</span>
+  </div>
+  <div id="game"></div>
+  <button id="restart">Restart Game</button>
+
+  <script>
+    const allEmojis = ["🍕", "🎈", "🚗", "🐶", "🌟", "🍩", "🎮", "📱", "👻", "🍔", "🦄", "🎲", "📷", "💡", "🎵", "🌈"];
+    let level = 1;
+    let wins = 0;
+    let moves = 0;
+
+    const game = document.getElementById("game");
+    const levelSpan = document.getElementById("level");
+    const winsSpan = document.getElementById("wins");
+    const movesSpan = document.getElementById("moves");
+    const bestSpan = document.getElementById("best");
+    const restartBtn = document.getElementById("restart");
+
+    function createLevel() {
+      game.innerHTML = "";
+      moves = 0;
+      const pairCount = level + 2;
+      const gridSize = Math.ceil(Math.sqrt(pairCount * 2));
+      const emojis = allEmojis.slice(0, pairCount);
+      let cards = [...emojis, ...emojis].sort(() => 0.5 - Math.random());
+
+      levelSpan.innerText = level;
+      winsSpan.innerText = wins;
+      movesSpan.innerText = moves;
+      bestSpan.innerText = pairCount * 2;
+
+      game.style.gridTemplateColumns = `repeat(${gridSize}, 80px)`;
+
+      let flippedCards = [];
+      let matchedCount = 0;
+      let lockBoard = false;
+
+      cards.forEach(emoji => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.dataset.emoji = emoji;
+
+        card.innerHTML = `
+          <div class="card-inner">
+            <div class="card-front">?</div>
+            <div class="card-back">${emoji}</div>
+          </div>
+        `;
+
+        card.addEventListener("click", () => {
+          if (lockBoard || card.classList.contains("flipped") || card.classList.contains("matched")) return;
+
+          card.classList.add("flipped");
+          flippedCards.push(card);
+
+          if (flippedCards.length === 2) {
+            lockBoard = true;
+            moves++;
+            movesSpan.innerText = moves;
+
+            const [first, second] = flippedCards;
+
+            if (first.dataset.emoji === second.dataset.emoji) {
+              first.classList.add("matched");
+              second.classList.add("matched");
+              flippedCards = [];
+              lockBoard = false;
+              matchedCount++;
+
+              if (matchedCount === pairCount) {
+                setTimeout(() => {
+                  wins++;
+                  level++;
+                  createLevel();
+                }, 800);
+              }
+            } else {
+              setTimeout(() => {
+                first.classList.remove("flipped");
+                second.classList.remove("flipped");
+                flippedCards = [];
+                lockBoard = false;
+              }, 800);
+            }
+          }
+        });
+
+        game.appendChild(card);
+      });
+    }
+
+    restartBtn.addEventListener("click", () => {
+      level = 1;
+      wins = 0;
+      createLevel();
+    });
+
+    createLevel();
+  </script>
+</body>
+</html>
