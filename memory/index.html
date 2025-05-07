@@ -112,7 +112,7 @@
       game.innerHTML = "";
       moves = 0;
       const pairCount = level + 2;
-      const gridSize = Math.ceil(Math.sqrt(pairCount * 8));
+      const gridSize = Math.ceil(Math.sqrt(pairCount * 10));
       const emojis = allEmojis.slice(0, pairCount);
       let cards = [...emojis, ...emojis].sort(() => 0.5 - Math.random());
 
