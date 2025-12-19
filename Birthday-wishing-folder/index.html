@@ -2,187 +2,576 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday</title>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-body{
-    margin:0;
-    background:linear-gradient(135deg,#000,#ffd700);
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:'Great Vibes',cursive;
-    overflow:hidden;
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #000428, #004e92, #ffd700);
+    background-size: 400% 400%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: gradientBG 15s ease infinite;
+    overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Birthday Card */
-.card{
-    width:360px;
-    background:#111;
-    border-radius:25px;
-    padding:20px;
-    text-align:center;
-    color:white;
-    box-shadow:0 0 30px gold;
-    animation:fade 2s ease;
+.card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(10, 10, 20, 0.85);
+    border-radius: 25px;
+    padding: 25px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1.5s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
-@keyframes fade{
-    from{opacity:0; transform:scale(0.8);}
-    to{opacity:1; transform:scale(1);}
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 0;
+    animation: starMove 40s linear infinite;
+}
+
+@keyframes starMove {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* Heading */
-h1{
-    font-size:50px;
-    color:gold;
-    margin-bottom:5px;
-    text-shadow:0 0 15px gold;
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: gold;
+    margin-bottom: 5px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    letter-spacing: 2px;
 }
 
 /* Typing Name */
-#name{
-    font-size:25px;
-    color:#ffeb3b;
-    height:30px;
-    margin-bottom:10px;
+#name {
+    font-size: 1.5rem;
+    color: #ffeb3b;
+    height: 35px;
+    margin-bottom: 15px;
+    font-weight: 500;
 }
 
 /* Student Photo */
-.photo{
-    width:160px;
-    height:160px;
-    border-radius:16px;
-    border:5px solid gold;
-    object-fit:cover;
-    box-shadow:0 0 25px gold;
-    background:white;
-    padding:5px;
-    animation:float 2.5s ease-in-out infinite;
+.photo-container {
+    position: relative;
+    display: inline-block;
+    margin: 15px 0;
 }
 
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-15px);}
-    100%{transform:translateY(0);}
+.photo-frame {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, gold, #ff9800, gold);
+    padding: 8px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+    animation: float 3s ease-in-out infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #111;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
 }
 
 /* Cake */
-.cake{
-    font-size:75px;
-    cursor:pointer;
-    animation:shake 1.5s infinite;
-    margin:10px 0;
+.cake-container {
+    margin: 20px 0;
+    position: relative;
 }
 
-@keyframes shake{
-    0%{transform:rotate(0);}
-    50%{transform:rotate(5deg);}
-    100%{transform:rotate(0);}
+.cake {
+    font-size: 5rem;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+    display: inline-block;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    transition: transform 0.3s;
 }
 
-/* Tap the cake text (UPDATED) */
-.tap-text{
-    font-size:18px;
-    color:gold;
-    margin-bottom:10px;
-    animation:pulse 1.5s infinite;
+.cake:hover {
+    transform: scale(1.1);
 }
 
-@keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.1);}
-    100%{transform:scale(1);}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Tap the cake text */
+.tap-text {
+    font-size: 1.2rem;
+    color: gold;
+    margin-bottom: 5px;
+    animation: textPulse 2s infinite;
+    font-weight: 500;
+}
+
+@keyframes textPulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
 }
 
 /* Message */
-.message{
-    font-size:20px;
-    line-height:1.6;
-    margin-top:10px;
+.message {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border-left: 3px solid gold;
+    text-align: left;
 }
 
 /* Button */
-button{
-    margin-top:12px;
-    padding:8px 20px;
-    border:none;
-    border-radius:20px;
-    background:gold;
-    color:black;
-    font-weight:bold;
-    cursor:pointer;
+button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(90deg, gold, #ff9800);
+    color: #111;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 /* Confetti */
-.confetti{
-    position:absolute;
-    width:8px;
-    height:8px;
-    animation:fall linear infinite;
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: fall linear infinite;
+    z-index: 10;
 }
 
-@keyframes fall{
-    0%{top:-10px;}
-    100%{top:100vh;}
+@keyframes fall {
+    0% {
+        top: -10px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100vh;
+        transform: rotate(360deg);
+    }
+}
+
+/* Floating balloons */
+.balloon {
+    position: absolute;
+    width: 50px;
+    height: 60px;
+    border-radius: 50%;
+    bottom: -70px;
+    animation: floatUp 15s linear infinite;
+    z-index: 0;
+    opacity: 0.7;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.5);
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+/* Footer text */
+.footer-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive Design */
+/* For tablets */
+@media (min-width: 768px) {
+    .card {
+        max-width: 500px;
+        padding: 30px;
+    }
+    
+    h1 {
+        font-size: 4.5rem;
+    }
+    
+    #name {
+        font-size: 1.8rem;
+    }
+    
+    .photo-frame {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .cake {
+        font-size: 6rem;
+    }
+    
+    .message {
+        font-size: 1.2rem;
+        padding: 20px;
+    }
+    
+    button {
+        font-size: 1.1rem;
+        padding: 14px 35px;
+    }
+}
+
+/* For laptops and larger screens */
+@media (min-width: 1024px) {
+    body {
+        padding: 30px;
+    }
+    
+    .card {
+        max-width: 550px;
+        padding: 35px;
+    }
+    
+    h1 {
+        font-size: 5rem;
+    }
+    
+    #name {
+        font-size: 2rem;
+    }
+    
+    .photo-frame {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .cake {
+        font-size: 7rem;
+    }
+    
+    .message {
+        font-size: 1.3rem;
+        line-height: 1.8;
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    
+    .card {
+        padding: 20px;
+        border-radius: 20px;
+    }
+    
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    #name {
+        font-size: 1.3rem;
+        height: 30px;
+    }
+    
+    .photo-frame {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .cake {
+        font-size: 4rem;
+    }
+    
+    .tap-text {
+        font-size: 1rem;
+    }
+    
+    .message {
+        font-size: 1rem;
+        padding: 12px;
+    }
+    
+    button {
+        padding: 10px 25px;
+        font-size: 0.95rem;
+    }
 }
 </style>
 </head>
 
 <body>
+<!-- Balloons for background decoration -->
+<div class="balloon" style="left: 10%; background: #ff6b6b; animation-delay: 0s;"></div>
+<div class="balloon" style="left: 20%; background: #4ecdc4; animation-delay: 3s;"></div>
+<div class="balloon" style="left: 30%; background: #ffd166; animation-delay: 6s;"></div>
+<div class="balloon" style="left: 70%; background: #06d6a0; animation-delay: 2s;"></div>
+<div class="balloon" style="left: 80%; background: #118ab2; animation-delay: 5s;"></div>
+<div class="balloon" style="left: 90%; background: #ef476f; animation-delay: 8s;"></div>
 
 <div class="card">
-    <h1>Happy Birthday</h1>
-    <div id="name"></div>
+    <div class="card-content">
+        <h1>Happy Birthday</h1>
+        <div id="name"></div>
 
-    <img src="student.jpg" class="photo">
+        <div class="photo-container">
+            <div class="photo-frame">
+                <!-- Replace with actual student photo -->
+                <img src="student.jpg" class="photo" alt="Student Photo">
+            </div>
+        </div>
 
-    <div class="cake" onclick="confettiBurst()">🎂</div>
-    <div class="tap-text">Tap the cake</div>
+        <div class="cake-container">
+            <div class="cake" onclick="confettiBurst()">🎂</div>
+            <div class="tap-text">Tap the cake for celebration!</div>
+        </div>
 
-    <div class="message">
-        Our Shining Star,<br><br>
-        On your special day, we wish you happiness, peace,
-        and success. May Allah bless you with good health,
-        a kind heart, and a bright future. 🌸<br><br>
-        Always believe in yourself. Keep learning and smiling. 📚✨
+        <div class="message">
+            Our Shining Star,<br><br>
+            On your special day, we wish you happiness, peace,
+            and success. May Allah bless you with good health,
+            a kind heart, and a bright future. 🌸<br><br>
+            Always believe in yourself. Keep learning and smiling. 📚✨
+        </div>
+
+        <audio id="song" loop>
+            <!-- Add your birthday.mp3 file here -->
+            <source src="birthday.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        
+        <button onclick="playMusic()">
+            <i class="fas fa-music"></i> 
+            <span id="music-text">Play Birthday Song</span>
+        </button>
+        
+        <div class="footer-text">
+            Made with <i class="fas fa-heart" style="color: #ff4757;"></i> for a special student
+        </div>
     </div>
-
-    <audio id="song" src="birthday.mp3"></audio>
-    <button onclick="playMusic()">🎵 Play / Pause Music</button>
 </div>
 
 <script>
+// Typing animation for the name
 let text = "Our Shining Star 🎉";
 let i = 0;
-function typeText(){
-    if(i < text.length){
+function typeText() {
+    if (i < text.length) {
         document.getElementById("name").innerHTML += text.charAt(i);
         i++;
         setTimeout(typeText, 100);
     }
 }
-typeText();
 
-function playMusic(){
-    let s = document.getElementById("song");
-    s.paused ? s.play() : s.pause();
-}
+// Play/Pause music function
+let isPlaying = false;
+const song = document.getElementById("song");
+const musicText = document.getElementById("music-text");
 
-function confettiBurst(){
-    for(let i=0;i<70;i++){
-        let c = document.createElement("div");
-        c.className = "confetti";
-        c.style.left = Math.random()*100 + "vw";
-        c.style.background = ["gold","pink","orange","white"][Math.floor(Math.random()*4)];
-        c.style.animationDuration = (Math.random()*3+2) + "s";
-        document.body.appendChild(c);
+function playMusic() {
+    if (song.paused) {
+        song.play();
+        musicText.textContent = "Pause Music";
+        isPlaying = true;
+    } else {
+        song.pause();
+        musicText.textContent = "Play Birthday Song";
+        isPlaying = false;
     }
 }
+
+// Confetti burst function
+function confettiBurst() {
+    // Play a celebration sound if available
+    try {
+        const confettiSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-party-horn-sound-2927.mp3');
+        confettiSound.volume = 0.3;
+        confettiSound.play();
+    } catch (e) {
+        console.log("No confetti sound available");
+    }
+    
+    // Create confetti elements
+    for (let i = 0; i < 100; i++) {
+        let c = document.createElement("div");
+        c.className = "confetti";
+        
+        // Random position
+        c.style.left = Math.random() * 100 + "vw";
+        
+        // Random color
+        const colors = ["gold", "#ff6b6b", "#4ecdc4", "#ffd166", "#06d6a0", "#118ab2", "#ef476f", "white"];
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Random size
+        const size = Math.random() * 10 + 5;
+        c.style.width = size + "px";
+        c.style.height = size + "px";
+        
+        // Random animation duration
+        c.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        
+        // Random animation delay
+        c.style.animationDelay = Math.random() * 2 + "s";
+        
+        // Add to body
+        document.body.appendChild(c);
+        
+        // Remove confetti after animation completes
+        setTimeout(() => {
+            c.remove();
+        }, 5000);
+    }
+}
+
+// Initialize balloons
+function createBalloons() {
+    const balloonContainer = document.body;
+    for (let i = 0; i < 8; i++) {
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        
+        // Random position
+        balloon.style.left = Math.random() * 100 + '%';
+        
+        // Random color
+        const colors = ["#ff6b6b", "#4ecdc4", "#ffd166", "#06d6a0", "#118ab2", "#ef476f", "#ff9a76", "#a29bfe"];
+        balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Random animation delay
+        balloon.style.animationDelay = Math.random() * 10 + 's';
+        
+        // Random animation duration
+        balloon.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        
+        balloonContainer.appendChild(balloon);
+    }
+}
+
+// Start everything when page loads
+window.onload = function() {
+    typeText();
+    createBalloons();
+    
+    // Auto-start music on mobile (with user interaction required)
+    document.addEventListener('click', function initAudio() {
+        if (!isPlaying) {
+            // Try to play music on first user interaction
+            song.play().then(() => {
+                musicText.textContent = "Pause Music";
+                isPlaying = true;
+            }).catch(e => {
+                console.log("Autoplay prevented");
+            });
+        }
+        // Remove this event listener after first click
+        document.removeEventListener('click', initAudio);
+    });
+};
 </script>
 
 </body>
